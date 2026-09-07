@@ -113,7 +113,7 @@ export function MosaicProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const value = useMemo<StoreValue>(() => {
-    const getUser = (id: string) => users.find((u) => u.id === id) ?? users[0];
+    const getUser = (id: string) => users.find((u) => u.id === id) ?? users[0]!;
 
     return {
       ...state,

@@ -47,7 +47,7 @@ export interface Mosaic {
   activity: "quiet" | "steady" | "buzzing";
   cover: string;
   createdBy: string;
-  featured?: boolean;
+  featured?: boolean | undefined;
 }
 
 export interface Tile {
@@ -57,9 +57,9 @@ export interface Tile {
   type: TileType;
   text: string;
   createdAt: string;
-  parentId?: string;
-  intent?: Intent;
-  span?: "sm" | "md" | "lg";
+  parentId?: string | undefined;
+  intent?: Intent | undefined;
+  span?: "sm" | "md" | "lg" | undefined;
   reactions: {
     resonate: number;
     support: number;
@@ -71,6 +71,6 @@ export interface AppNotification {
   id: string;
   kind: "build" | "resonate" | "activity" | "invite" | "ask";
   text: string;
-  mosaicId?: string;
+  mosaicId?: string | undefined;
   time: string;
 }
