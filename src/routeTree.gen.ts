@@ -10,33 +10,154 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as CommunitiesRouteImport } from './routes/communities'
+import { Route as CreateRouteImport } from './routes/create'
+import { Route as DiscoverRouteImport } from './routes/discover'
+import { Route as MySpaceRouteImport } from './routes/my-space'
+import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as SearchRouteImport } from './routes/search'
+import { Route as MosaicMosaicIdRouteImport } from './routes/mosaic.$mosaicId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunitiesRoute = CommunitiesRouteImport.update({
+  id: '/communities',
+  path: '/communities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CreateRoute = CreateRouteImport.update({
+  id: '/create',
+  path: '/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DiscoverRoute = DiscoverRouteImport.update({
+  id: '/discover',
+  path: '/discover',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MySpaceRoute = MySpaceRouteImport.update({
+  id: '/my-space',
+  path: '/my-space',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SearchRoute = SearchRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MosaicMosaicIdRoute = MosaicMosaicIdRouteImport.update({
+  id: '/mosaic/$mosaicId',
+  path: '/mosaic/$mosaicId',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/communities': typeof CommunitiesRoute
+  '/create': typeof CreateRoute
+  '/discover': typeof DiscoverRoute
+  '/my-space': typeof MySpaceRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/mosaic/$mosaicId': typeof MosaicMosaicIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/communities': typeof CommunitiesRoute
+  '/create': typeof CreateRoute
+  '/discover': typeof DiscoverRoute
+  '/my-space': typeof MySpaceRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/mosaic/$mosaicId': typeof MosaicMosaicIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/communities': typeof CommunitiesRoute
+  '/create': typeof CreateRoute
+  '/discover': typeof DiscoverRoute
+  '/my-space': typeof MySpaceRoute
+  '/notifications': typeof NotificationsRoute
+  '/profile': typeof ProfileRoute
+  '/search': typeof SearchRoute
+  '/mosaic/$mosaicId': typeof MosaicMosaicIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/communities'
+    | '/create'
+    | '/discover'
+    | '/my-space'
+    | '/notifications'
+    | '/profile'
+    | '/search'
+    | '/mosaic/$mosaicId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/communities'
+    | '/create'
+    | '/discover'
+    | '/my-space'
+    | '/notifications'
+    | '/profile'
+    | '/search'
+    | '/mosaic/$mosaicId'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/communities'
+    | '/create'
+    | '/discover'
+    | '/my-space'
+    | '/notifications'
+    | '/profile'
+    | '/search'
+    | '/mosaic/$mosaicId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  CommunitiesRoute: typeof CommunitiesRoute
+  CreateRoute: typeof CreateRoute
+  DiscoverRoute: typeof DiscoverRoute
+  MySpaceRoute: typeof MySpaceRoute
+  NotificationsRoute: typeof NotificationsRoute
+  ProfileRoute: typeof ProfileRoute
+  SearchRoute: typeof SearchRoute
+  MosaicMosaicIdRoute: typeof MosaicMosaicIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +169,83 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/communities': {
+      id: '/communities'
+      path: '/communities'
+      fullPath: '/communities'
+      preLoaderRoute: typeof CommunitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/create': {
+      id: '/create'
+      path: '/create'
+      fullPath: '/create'
+      preLoaderRoute: typeof CreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/discover': {
+      id: '/discover'
+      path: '/discover'
+      fullPath: '/discover'
+      preLoaderRoute: typeof DiscoverRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/my-space': {
+      id: '/my-space'
+      path: '/my-space'
+      fullPath: '/my-space'
+      preLoaderRoute: typeof MySpaceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/search': {
+      id: '/search'
+      path: '/search'
+      fullPath: '/search'
+      preLoaderRoute: typeof SearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mosaic/$mosaicId': {
+      id: '/mosaic/$mosaicId'
+      path: '/mosaic/$mosaicId'
+      fullPath: '/mosaic/$mosaicId'
+      preLoaderRoute: typeof MosaicMosaicIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  CommunitiesRoute: CommunitiesRoute,
+  CreateRoute: CreateRoute,
+  DiscoverRoute: DiscoverRoute,
+  MySpaceRoute: MySpaceRoute,
+  NotificationsRoute: NotificationsRoute,
+  ProfileRoute: ProfileRoute,
+  SearchRoute: SearchRoute,
+  MosaicMosaicIdRoute: MosaicMosaicIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
