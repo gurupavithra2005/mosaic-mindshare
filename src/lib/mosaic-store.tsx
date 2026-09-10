@@ -126,12 +126,13 @@ export function MosaicProvider({ children }: { children: ReactNode }) {
       childrenOf: (tileId) => state.tiles.filter((t) => t.parentId === tileId),
 
       addTile: ({ mosaicId, type, text, parentId, intent }) => {
+        const clean = sanitizeText(text);
         const tile: Tile = {
           id: uid("t"),
           mosaicId,
           authorId: currentUserId,
           type,
-          text,
+          text: clean,
           parentId,
           intent,
           createdAt: new Date().toISOString(),
