@@ -15,6 +15,7 @@ import { AppShell } from "@/components/mosaic/AppShell";
 import { AuthProvider } from "@/lib/auth-store";
 import { MosaicProvider } from "@/lib/mosaic-store";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider, themeBootstrapScript } from "@/lib/theme";
 
 function NotFoundComponent() {
   return (
