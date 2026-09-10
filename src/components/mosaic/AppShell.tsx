@@ -45,6 +45,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             <span className="truncate font-display text-lg font-semibold tracking-tight">MOSAIC</span>
           </Link>
           <div className="flex shrink-0 items-center gap-1.5">
+            <ThemeToggle />
             <NotificationBell count={notifications.length} />
             <Link
               to="/profile"
