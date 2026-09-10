@@ -3,6 +3,7 @@ import { Bell, Compass, Grid2x2Plus, Home, Search, User, Users, Bookmark } from 
 import type { ReactNode } from "react";
 import { useMosaicStore } from "@/lib/mosaic-store";
 import { useAuth } from "@/lib/auth-store";
+import { ThemeToggle } from "@/components/mosaic/ThemeToggle";
 
 const primaryNav = [
   { to: "/", label: "Home", icon: Home, exact: true },
@@ -117,6 +118,10 @@ export function AppShell({ children }: { children: ReactNode }) {
               })}
             </ul>
           </nav>
+
+          <div className="mt-auto">
+            <ThemeToggle withLabel />
+          </div>
 
           <Link
             to={account ? "/profile" : "/auth"}
