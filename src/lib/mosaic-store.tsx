@@ -205,7 +205,7 @@ export function MosaicProvider({ children }: { children: ReactNode }) {
           mosaicId: parent.mosaicId,
           authorId: currentUserId,
           type: "question",
-          text: question,
+          text: sanitizeText(question),
           parentId: tileId,
           intent: "question",
           createdAt: new Date().toISOString(),
