@@ -8,6 +8,7 @@ import type { Tile, TileType } from "@/data/types";
 import { coverImageFor } from "@/lib/covers";
 import { modeCopy, tileTypeCopy, timeAgo } from "@/lib/format";
 import { useMosaicStore } from "@/lib/mosaic-store";
+import { useDialogA11y } from "@/hooks/use-dialog-a11y";
 
 export const Route = createFileRoute("/mosaic/$mosaicId")({
   head: () => ({
@@ -199,6 +200,7 @@ function TileDetail({ tile, onClose, onOpen }: { tile: Tile; onClose: () => void
   const resonated = store.resonated.includes(tile.id);
   const supported = store.supported.includes(tile.id);
   const savedTile = store.savedTiles.includes(tile.id);
+  const dialogRef = useDialogA11y<HTMLDivElement>(onClose);
 
   return (
     <div
