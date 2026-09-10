@@ -15,6 +15,7 @@ import { AppShell } from "@/components/mosaic/AppShell";
 import { AuthProvider } from "@/lib/auth-store";
 import { MosaicProvider } from "@/lib/mosaic-store";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider, themeBootstrapScript } from "@/lib/theme";
 
 function NotFoundComponent() {
   return (
@@ -81,14 +82,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "MOSAIC — Social, without the endless scroll" },
+      {
+        name: "description",
+        content:
+          "MOSAIC is a frontend-only social surface where ideas connect as tiles instead of stacking into a feed.",
+      },
+      { name: "theme-color", content: "#f6f3ee" },
+      { property: "og:site_name", content: "MOSAIC" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
       {
@@ -96,6 +99,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "MOSAIC",
+          url: "https://mosaic-mindshare.lovable.app",
+          description: "Social, without the endless scroll.",
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
@@ -106,9 +127,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
       </head>
       <body>
         {children}
@@ -123,15 +145,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <MosaicProvider>
-          <AppShell>
-            {/* Required: nested routes render here. */}
-            <Outlet />
-          </AppShell>
-          <Toaster position="bottom-center" />
-        </MosaicProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <MosaicProvider>
+            <AppShell>
+              {/* Required: nested routes render here. */}
+              <Outlet />
+            </AppShell>
+            <Toaster position="bottom-center" />
+          </MosaicProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

@@ -8,6 +8,7 @@ import type { Tile, TileType } from "@/data/types";
 import { coverImageFor } from "@/lib/covers";
 import { modeCopy, tileTypeCopy, timeAgo } from "@/lib/format";
 import { useMosaicStore } from "@/lib/mosaic-store";
+import { useDialogA11y } from "@/hooks/use-dialog-a11y";
 
 export const Route = createFileRoute("/mosaic/$mosaicId")({
   head: () => ({
@@ -199,9 +200,16 @@ function TileDetail({ tile, onClose, onOpen }: { tile: Tile; onClose: () => void
   const resonated = store.resonated.includes(tile.id);
   const supported = store.supported.includes(tile.id);
   const savedTile = store.savedTiles.includes(tile.id);
+  const dialogRef = useDialogA11y<HTMLDivElement>(onClose);
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-foreground/40 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Tile detail">
+    <div
+      ref={dialogRef}
+      className="fixed inset-0 z-50 flex justify-end bg-foreground/40 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Tile detail"
+    >
       <button type="button" aria-label="Close tile" className="flex-1" onClick={onClose} />
       <div className="h-full w-full max-w-xl overflow-y-auto bg-background p-5 shadow-xl sm:p-7">
         <div className="flex items-center justify-between">
