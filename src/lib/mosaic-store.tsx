@@ -15,6 +15,7 @@ import {
   users,
 } from "@/data/mock";
 import type { AppNotification, Intent, Mosaic, Tile, TileType, User } from "@/data/types";
+import { sanitizeText } from "@/lib/sanitize";
 
 const STORAGE_KEY = "mosaic.state.v1";
 
