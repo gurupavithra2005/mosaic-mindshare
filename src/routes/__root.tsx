@@ -126,9 +126,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: themeBootstrapScript }} />
       </head>
       <body>
         {children}
@@ -143,15 +144,17 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <MosaicProvider>
-          <AppShell>
-            {/* Required: nested routes render here. */}
-            <Outlet />
-          </AppShell>
-          <Toaster position="bottom-center" />
-        </MosaicProvider>
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <MosaicProvider>
+            <AppShell>
+              {/* Required: nested routes render here. */}
+              <Outlet />
+            </AppShell>
+            <Toaster position="bottom-center" />
+          </MosaicProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }
