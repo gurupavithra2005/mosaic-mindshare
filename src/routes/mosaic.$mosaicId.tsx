@@ -201,7 +201,13 @@ function TileDetail({ tile, onClose, onOpen }: { tile: Tile; onClose: () => void
   const savedTile = store.savedTiles.includes(tile.id);
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-end bg-foreground/40 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Tile detail">
+    <div
+      ref={dialogRef}
+      className="fixed inset-0 z-50 flex justify-end bg-foreground/40 backdrop-blur-sm"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Tile detail"
+    >
       <button type="button" aria-label="Close tile" className="flex-1" onClick={onClose} />
       <div className="h-full w-full max-w-xl overflow-y-auto bg-background p-5 shadow-xl sm:p-7">
         <div className="flex items-center justify-between">
